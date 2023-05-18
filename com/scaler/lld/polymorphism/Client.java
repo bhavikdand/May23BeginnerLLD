@@ -1,5 +1,8 @@
 package com.scaler.lld.polymorphism;
 
+
+import com.scaler.lld.polymorphism.compile_time.Printer;
+
 public class Client {
 
     public static void main(String[] args) {
