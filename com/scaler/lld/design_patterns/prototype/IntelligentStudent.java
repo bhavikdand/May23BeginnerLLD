@@ -15,7 +15,7 @@ public class IntelligentStudent extends Student{
     }
 
     @Override
-    public Student clone() {
+    public IntelligentStudent clone() {
         return new IntelligentStudent(this);
     }
 }

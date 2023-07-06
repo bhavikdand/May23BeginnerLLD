@@ -9,6 +9,9 @@ public class Client {
         Student st = getPrototypeStudent(studentRegistry);
 
         Student clone = st.clone();
+
+        IntelligentStudent is = new IntelligentStudent("email", "name", 20, "LPU", 20);
+        IntelligentStudent isClone = is.clone();
         System.out.println("DEBUG");
     }
 
