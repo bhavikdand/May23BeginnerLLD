@@ -42,16 +42,16 @@ public class TicTacToeGame { // Mimicks our frontend
 
         while(gameController.getGameStatus(game).equals(GameStatus.IN_PROGRESS)){
             gameController.displayBoard(game);
-            Player player = gameController.getCurrentPlayer(game);
-            System.out.println(player.getName() + "'s turn, give row and col");
-            int row = scanner.nextInt();
-            int col = scanner.nextInt();
-            gameController.makeMove(game, player, row, col);
+            gameController.makeMove(game);
         }
         if(gameController.getGameStatus(game).equals(GameStatus.ENDED)){
             Player winnerPlayer = gameController.getCurrentPlayer(game);
             System.out.println(winnerPlayer.getName() + " has won!");
         }
+        else if(gameController.getGameStatus(game).equals(GameStatus.DRAW)){
+            System.out.println("Game has drawn!");
+        }
+        gameController.displayBoard(game);
 
     }
 }

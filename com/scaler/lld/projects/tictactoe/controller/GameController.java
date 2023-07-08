@@ -21,8 +21,8 @@ public class GameController {
         return game;
     }
 
-    public void makeMove(Game game, Player player, int row, int col){
-        game.makeMove(player, row, col);
+    public void makeMove(Game game){
+        game.makeMove();
     }
 
     //Break for 7 mins: 8:38 AM

@@ -29,8 +29,8 @@ public class OrderNWinningStrategy implements WinningStrategy{
 
 
         count = 0;
-        for(int j=0; j<cells.size(); j++){
-            Cell cell = board.getCells().get(row).get(j);
+        for(int i=0; i<cells.size(); i++){
+            Cell cell = board.getCells().get(i).get(col);
             if(cell.getCellState() == CellState.OCCUPIED &&
                     cell.getPlayer().getSymbol() == move.getPlayer().getSymbol()){
                 count++;
@@ -48,6 +48,24 @@ public class OrderNWinningStrategy implements WinningStrategy{
             // diagonal
             for(int i=0; i<board.getCells().size(); i++){
                 Cell cell = board.getCells().get(i).get(i);
+                if(cell.getCellState() == CellState.OCCUPIED &&
+                        cell.getPlayer().getSymbol() == move.getPlayer().getSymbol()){
+                    count++;
+                } else {
+                    break;
+                }
+            }
+        }
+        if(count == cells.size()){
+            return true;
+        }
+
+        count = 0;
+        if(row + col == board.getCells().size() - 1){
+            //reverse diagonal
+            for(int i=0; i<board.getCells().size(); i++){
+                int j = board.getCells().size() - 1 - i;
+                Cell cell = board.getCells().get(i).get(j);
                 if(cell.getCellState() == CellState.OCCUPIED &&
                         cell.getPlayer().getSymbol() == move.getPlayer().getSymbol()){
                     count++;
