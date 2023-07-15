@@ -16,4 +16,10 @@ public class Vehicle {
     public String getVehicleNumber() {
         return vehicleNumber;
     }
+
+    public Vehicle(BaseModel baseModel, VehicleType vehicleType, String vehicleNumber) {
+        this.baseModel = baseModel;
+        this.vehicleType = vehicleType;
+        this.vehicleNumber = vehicleNumber;
+    }
 }

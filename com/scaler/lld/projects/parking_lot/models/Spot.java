@@ -44,4 +44,9 @@ public class Spot {
                 ", supportedVehicleType=" + supportedVehicleType +
                 '}';
     }
+
+    public void allocateSpot(Vehicle vehicle){
+        this.vehicle = vehicle;
+        this.status = SpotStatus.OCCUPIED;
+    }
 }

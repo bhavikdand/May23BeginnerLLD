@@ -6,6 +6,7 @@ import com.scaler.lld.projects.parking_lot.models.*;
 import com.scaler.lld.projects.parking_lot.repositories.ParkingLotRepository;
 
 public class NearestSpotAssignmentStrategy implements SpotAssignmentStrategy{
+    //TODO get parking details from service
     private ParkingLotRepository repository;
 
     public NearestSpotAssignmentStrategy(ParkingLotRepository repository) {
@@ -13,10 +14,13 @@ public class NearestSpotAssignmentStrategy implements SpotAssignmentStrategy{
     }
 
     @Override
-    public Spot assignSpot(VehicleType vehicleType, Gate gate) throws NoParkingSpotsFoundForVehicle, ParkingLotDoesntExists {
+    public Spot assignSpot(Vehicle vehicle, Gate gate) throws NoParkingSpotsFoundForVehicle, ParkingLotDoesntExists {
         ParkingLot parkingLot = repository.getParkingLotByGateId(gate.getBaseModel().getId());
+        // TODO read and implement template pattern
         if(parkingLot != null){
-            return getAvailableSpot(parkingLot, vehicleType);
+            Spot availableSpot = getAvailableSpot(parkingLot, vehicle.getVehicleType());
+            availableSpot.allocateSpot(vehicle);
+            return availableSpot;
         }
         throw new ParkingLotDoesntExists();
     }
